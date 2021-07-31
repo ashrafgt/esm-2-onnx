@@ -60,3 +60,7 @@ python -m onnxruntime_tools.optimizer_cli --float16 --opt_level 99 --use_gpu \
 ```bash
 python src/predict.py --model-path $OPTIMIZED_GRAPH_PATH
 ```
+
+### Warning:
+
+When comparing the prediction outputs between the original Pytorch model and the ONNX version, there seems to be a big loss of precision (significantly more pronounced compared to the [HuggingFace ProtBERT](https://huggingface.co/Rostlab/prot_bert) models with the the optimizations applied to the ESM model). Performing a few comparisons and judging the signficance of the precision loss is cruicial before adpoting the ONNX version of model for your workloads.
