@@ -1,0 +1,13 @@
+FROM nvidia/cuda:11.0.3-cudnn8-devel-ubuntu18.04
+
+RUN pip install pip==21.0.1
+
+WORKDIR /src
+
+ADD requirements.CUDA.txt .
+
+RUN pip install -r requirements.CUDA.txt
+
+ADD . .
+
+ENV CUDA_VISIBLE_DEVICES=0
